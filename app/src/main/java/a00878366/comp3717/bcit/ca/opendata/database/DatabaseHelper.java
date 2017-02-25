@@ -211,14 +211,14 @@ public class DatabaseHelper
     {
         final Cursor cursor;
 
-        String orderBy = DataSetDao.Properties.Name + " ASC";
+        String orderBy = DataSetDao.Properties.Name.columnName + " ASC";
         cursor = db.query(dataSetDao.getTablename(),
-                dataSetDao.getAllColumns(),
-                selection,
-                selectionArgs,
-                null,
-                null,
-                orderBy);
+                            dataSetDao.getAllColumns(),
+                            selection,
+                            selectionArgs,
+                            null,
+                            null,
+                            orderBy);
 
         return (cursor);
     }

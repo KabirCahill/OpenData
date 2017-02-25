@@ -18,6 +18,10 @@ public class DataLoader {
 
         helper = DatabaseHelper.getInstance(context);
         helper.openDatabaseForWriting(context);
+
+        helper.deleteAllCategories();
+        helper.deleteAllDataSets();
+
         numCategoryEntries = helper.getNumberOfCategories();
         numDataSetEntries = helper.getNumberOfDataSets();
 
@@ -36,7 +40,7 @@ public class DataLoader {
             helper.createCategory(11, "Utilities");
         }
 
-        if(numDataSetEntries == 0){
+        if(numDataSetEntries == 0) {
             // Business and Economy
             helper.createDataSet("Business Licenses (Active - Resident)","New Westminster has an annual renewal of approximately 4,000 business \n" +
                     "licenses each year. Business Licensing also issues licenses for liquor \n" +
