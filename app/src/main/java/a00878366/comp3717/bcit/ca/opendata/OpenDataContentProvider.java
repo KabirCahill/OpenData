@@ -9,7 +9,7 @@ import android.net.Uri;
 
 import a00878366.comp3717.bcit.ca.opendata.database.DatabaseHelper;
 
-public class CategoryContentProvider
+public class OpenDataContentProvider
     extends ContentProvider
 {
     private static final UriMatcher uriMatcher;

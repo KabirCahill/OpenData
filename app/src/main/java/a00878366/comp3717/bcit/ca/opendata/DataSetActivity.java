@@ -1,27 +1,26 @@
 package a00878366.comp3717.bcit.ca.opendata;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-
-import java.util.List;
 
 import a00878366.comp3717.bcit.ca.opendata.database.DatabaseHelper;
-import a00878366.comp3717.bcit.ca.opendata.database.schema.CategoryDao;
 import a00878366.comp3717.bcit.ca.opendata.database.schema.DataSetDao;
 
 public class DataSetActivity extends ListActivity {
 
     private SimpleCursorAdapter adapter;
     private long categoryId;
+    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,23 @@ public class DataSetActivity extends ListActivity {
         setListAdapter(adapter);
         manager = getLoaderManager();
         manager.initLoader(0, null, new DataSetActivity.DataSetLoaderCallbacks());
-        DataLoader.init(this);
+    }
+
+    @Override
+    protected  void onListItemClick(ListView listView, View view, int position, long id) {
+        String name;
+        String description;
+
+        cursor.moveToPosition(position);
+        //Log.v("---------------------->", cursor.getString(cursor.getColumnIndex("NAME")));
+        name = cursor.getString((cursor.getColumnIndex("NAME")));
+        description = cursor.getString((cursor.getColumnIndex("DESCRIPTION")));
+
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("description", description);
+
+        startActivity(intent);
     }
 
     private class DataSetLoaderCallbacks
@@ -66,7 +81,7 @@ public class DataSetActivity extends ListActivity {
             final Uri uri;
             final CursorLoader loader;
 
-            uri    = CategoryContentProvider.DATASETS_CONTENT_URI;
+            uri    = OpenDataContentProvider.DATASETS_CONTENT_URI;
             loader = new CursorLoader(DataSetActivity.this, uri, null, "category_id = " + categoryId, null, null);
 
             return (loader);
@@ -76,6 +91,22 @@ public class DataSetActivity extends ListActivity {
         public void onLoadFinished(final Loader<Cursor> loader,
                                    final Cursor         data)
         {
+            cursor = data;
+
+//            data.moveToFirst();
+//
+//            while(!data.isAfterLast()) {
+//                Log.v("name", data.getString(1));
+//
+//                data.move(1);
+//            }
+
+//            String[] cols = data.getColumnNames();
+//            for(String column : cols) {
+//                Log.v("col: ", column);
+//            }
+
+
             adapter.swapCursor(data);
         }
 

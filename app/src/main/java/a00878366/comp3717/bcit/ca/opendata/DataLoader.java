@@ -465,17 +465,17 @@ public class DataLoader {
 
 
             // Utilities
-            helper.createDataSet("Drinking Fountains", "", 11);
+            helper.createDataSet("Drinking Fountains", "No Description Available", 11);
 
-            helper.createDataSet("Sewer Catchbasins", "", 11);
+            helper.createDataSet("Sewer Catchbasins", "No Description Available", 11);
 
-            helper.createDataSet("Sewer Culverts", "", 11);
+            helper.createDataSet("Sewer Culverts", "No Description Available", 11);
 
-            helper.createDataSet("Sewer Ditches", "", 11);
+            helper.createDataSet("Sewer Ditches", "No Description Available", 11);
 
-            helper.createDataSet("Sewer Mains", "", 11);
+            helper.createDataSet("Sewer Mains", "No Description Available", 11);
 
-            helper.createDataSet("Sewer Maintenance Holes", "", 11);
+            helper.createDataSet("Sewer Maintenance Holes", "No Description Available", 11);
 
             helper.createDataSet("Water Hydrants", "A hydrant is an outlet from a fluid main often consisting of an upright pipe with a valve attached from which fluid (e.g. water or fuel) can be tapped.", 11);
 

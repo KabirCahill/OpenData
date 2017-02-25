@@ -66,7 +66,7 @@ public class MainActivity extends ListActivity
             final Uri uri;
             final CursorLoader loader;
 
-            uri    = CategoryContentProvider.CATEGORIES_CONTENT_URI;
+            uri    = OpenDataContentProvider.CATEGORIES_CONTENT_URI;
             loader = new CursorLoader(MainActivity.this, uri, null, null, null, null);
 
             return (loader);

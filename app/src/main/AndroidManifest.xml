@@ -17,12 +17,13 @@
         </activity>
 
         <provider
-            android:name=".CategoryContentProvider"
+            android:name=".OpenDataContentProvider"
             android:authorities="a00878366.comp3717.bcit.ca.opendata"
             android:enabled="true"
-            android:exported="false"></provider>
+            android:exported="false" />
 
-        <activity android:name=".DataSetActivity"></activity>
+        <activity android:name=".DataSetActivity" />
+        <activity android:name=".DetailsActivity"></activity>
     </application>
 
 </manifest>
