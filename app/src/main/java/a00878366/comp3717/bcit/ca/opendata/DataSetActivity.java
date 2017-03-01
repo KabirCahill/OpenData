@@ -32,8 +32,6 @@ public class DataSetActivity extends ListActivity {
         Bundle bundle = getIntent().getExtras();
         categoryId = bundle.getLong("category_id");
 
-
-
         helper = DatabaseHelper.getInstance(this);
         helper.openDatabaseForReading(this);
         adapter = new SimpleCursorAdapter(getBaseContext(),
@@ -93,9 +91,6 @@ public class DataSetActivity extends ListActivity {
         }
 
         @Override
-        public void onLoaderReset(final Loader<Cursor> loader)
-        {
-            adapter.swapCursor(null);
-        }
+        public void onLoaderReset(final Loader<Cursor> loader) { adapter.swapCursor(null); }
     }
 }
