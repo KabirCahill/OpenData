@@ -20,7 +20,6 @@ public class DataSetActivity extends ListActivity {
 
     private SimpleCursorAdapter adapter;
     private long categoryId;
-    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +58,7 @@ public class DataSetActivity extends ListActivity {
         String name;
         String description;
 
-        cursor.moveToPosition(position);
-        //Log.v("---------------------->", cursor.getString(cursor.getColumnIndex("NAME")));
+        Cursor cursor = (Cursor) getListView().getItemAtPosition(position);
         name = cursor.getString((cursor.getColumnIndex("NAME")));
         description = cursor.getString((cursor.getColumnIndex("DESCRIPTION")));
 
@@ -91,22 +89,6 @@ public class DataSetActivity extends ListActivity {
         public void onLoadFinished(final Loader<Cursor> loader,
                                    final Cursor         data)
         {
-            cursor = data;
-
-//            data.moveToFirst();
-//
-//            while(!data.isAfterLast()) {
-//                Log.v("name", data.getString(1));
-//
-//                data.move(1);
-//            }
-
-//            String[] cols = data.getColumnNames();
-//            for(String column : cols) {
-//                Log.v("col: ", column);
-//            }
-
-
             adapter.swapCursor(data);
         }
 

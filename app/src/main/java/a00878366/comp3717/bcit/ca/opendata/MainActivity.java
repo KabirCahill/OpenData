@@ -8,12 +8,15 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import a00878366.comp3717.bcit.ca.opendata.database.DatabaseHelper;
 import a00878366.comp3717.bcit.ca.opendata.database.schema.CategoryDao;
+
+import static android.R.attr.name;
 
 public class MainActivity extends ListActivity
 {
@@ -50,8 +53,11 @@ public class MainActivity extends ListActivity
 
     @Override
     protected  void onListItemClick(ListView listView, View view, int position, long id) {
+        Cursor cursor = (Cursor) getListView().getItemAtPosition(position);
+        long category_id = cursor.getLong((cursor.getColumnIndex("_id")));
+
         Intent intent = new Intent(this, DataSetActivity.class);
-        intent.putExtra("category_id", id);
+        intent.putExtra("category_id", category_id);
 
         startActivity(intent);
     }

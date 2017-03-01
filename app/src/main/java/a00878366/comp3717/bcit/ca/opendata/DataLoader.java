@@ -19,9 +19,6 @@ public class DataLoader {
         helper = DatabaseHelper.getInstance(context);
         helper.openDatabaseForWriting(context);
 
-        helper.deleteAllCategories();
-        helper.deleteAllDataSets();
-
         numCategoryEntries = helper.getNumberOfCategories();
         numDataSetEntries = helper.getNumberOfDataSets();
 
